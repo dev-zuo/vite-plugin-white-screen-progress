@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.2 (2026-05-06)
+
+- docs: add gif image, change var
+
 ## 0.2.1 (2026-05-06)
 
 - fix: style syntax error

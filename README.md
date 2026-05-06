@@ -2,6 +2,8 @@
 
 Show loading progress on page during Vite dev server white screen without opening devtools.
 
+![white-screen-progress.gif](../docs/white-screen-progress.gif)
+
 ## Install
 
 ```bash
@@ -12,13 +14,13 @@ npm install @dev_zuo/vite-plugin-white-screen-progress --save-dev
 
 ```js
 // vite.config.js
-import whiteScreenProgress from '@dev_zuo/vite-plugin-white-screen-progress'
+import devServerWhiteScreenProgress from '@dev_zuo/vite-plugin-white-screen-progress'
 
 export default {
   // ...
   plugins: [
     // Just enabled in dev server（vite dev），ignore when vite build
-    witeScreenProgress(),
+    devServerWhiteScreenProgress(),
   ]
 }
 ```
