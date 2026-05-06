@@ -5,7 +5,7 @@ Show loading progress on page during Vite dev server white screen without openin
 ## Install
 
 ```bash
-npm install @dev_zuo/vite-plugin-white-screen-progress@0.1.0 --save-dev --save-exact
+npm install @dev_zuo/vite-plugin-white-screen-progress --save-dev
 ```
 
 ## Usage
@@ -24,8 +24,30 @@ export default {
 
 ## Config
 
-TODO
+### Theme
 
-- Theme
+- "fix-right": default, progress info panel fix in right 
+- "middle": display in a flat layout on the page, not fix
 
-- Custom CSS Style
+```js
+devServerWhiteScreenProgress({
+    theme?: string   // 'middle' | 'fix-right'
+})
+```
+
+### Custom CSS Style
+
+Custom progress info panel css inline-style,  > theme config
+```js
+devServerWhiteScreenProgress({
+    style?: string
+})
+```
+
+Example
+
+```js
+devServerWhiteScreenProgress({
+    style: 'color: blue; background: #fff; padding: 15px; border-radius: 15px'
+})
+```

@@ -1,8 +1,9 @@
-const clientScriptString = `
+const getClientScript = ({ themeStyle }) => {
+    return  `
     const randomDivId = 'vite-plugin-white-screen-progress-' + Math.round(Math.random() * 100 * 1000)
     const div = document.createElement('div');
     div.setAttribute('id', randomDivId);
-    div.setAttribute('style', 'font-size: 12px;background: rgba(0, 0, 0, .8);color: white; padding: 22px;border-radius: 8px;position:fixed;top: 200px;z-index: 1000000;right: 9px;width:300px;height: 300px;overflow:hidden;word-break:break-all;');
+    div.setAttribute('style', ${themeStyle});
     document.body.appendChild(div);
 
     let resourceInfo = {}; // save resource load status
@@ -38,7 +39,7 @@ const clientScriptString = `
     });
 
     observer.observe({ entryTypes: ['resource'] });
-    window?.addEventListener('load', () => {
+    window?.addEventListener('DOMContentLoaded', () => {
         const el = document.querySelector('#' + randomDivId);
         if (el) el.remove();
         observer.disconnect();
@@ -61,8 +62,20 @@ const clientScriptString = `
         lastResourceName = curResourceName
     }, 2500)
 `;
+}
 
-export default function devServerWhiteScreenProgress() {
+export default function devServerWhiteScreenProgress(config = {
+    theme: 'fix-right',
+    style: ''
+}) {
+
+    const themeStyleConfig = {
+        // Default style  fix in right 
+        'fix-right': 'font-size: 12px;background: rgba(0, 0, 0, .8);color: white; padding: 22px;border-radius: 8px;position:fixed;top: 200px;z-index: 1000000;right: 9px;width:300px;height: 300px;overflow:hidden;word-break:break-all;',
+        // Display in a flat layout on the page
+        'middle': 'font-size: 14px;background: #fff;color: #333; padding: 22px;border-radius: 8px;position:absolute;top: 100px;z-index: 1000000',
+    }
+
     return {
         name: 'vite-plugin-white-screen-progress',
         apply: 'serve', // just enabled in dev server（vite dev），ignore when vite build
@@ -78,7 +91,9 @@ export default function devServerWhiteScreenProgress() {
                         attrs: {
                             type: 'module'
                         },
-                        children: clientScriptString
+                        children: getClientScript({
+                            themeStyle: config?.style || themeStyleConfig[config?.theme] || themeStyleConfig['fix-right']
+                        })
                     }
                 ]
             };
