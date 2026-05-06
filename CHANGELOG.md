@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.3.0 (2026-05-06)
+
+- feat: add d.ts, fix ts check error
+
 ## 0.2.3 (2026-05-06)
 
 - fix: edit gif path
