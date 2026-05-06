@@ -2,7 +2,7 @@
 
 Show loading progress on page during Vite dev server white screen without opening devtools.
 
-![white-screen-progress.gif](../docs/white-screen-progress.gif)
+![white-screen-progress.gif](./docs/white-screen-progress.gif)
 
 ## Install
 
