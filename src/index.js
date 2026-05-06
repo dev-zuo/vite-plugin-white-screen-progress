@@ -3,7 +3,7 @@ const getClientScript = ({ themeStyle }) => {
     const randomDivId = 'vite-plugin-white-screen-progress-' + Math.round(Math.random() * 100 * 1000)
     const div = document.createElement('div');
     div.setAttribute('id', randomDivId);
-    div.setAttribute('style', ${themeStyle});
+    div.setAttribute('style', '${themeStyle}');
     document.body.appendChild(div);
 
     let resourceInfo = {}; // save resource load status

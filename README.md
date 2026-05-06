@@ -12,12 +12,13 @@ npm install @dev_zuo/vite-plugin-white-screen-progress --save-dev
 
 ```js
 // vite.config.js
-import devServerWhiteScreenProgress from '@dev_zuo/vite-plugin-white-screen-progress'
+import whiteScreenProgress from '@dev_zuo/vite-plugin-white-screen-progress'
 
 export default {
   // ...
   plugins: [
-    devServerWhiteScreenProgress(),
+    // Just enabled in dev server（vite dev），ignore when vite build
+    witeScreenProgress(),
   ]
 }
 ```
