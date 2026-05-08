@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-white-screen-progress",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Show loading progress on page during Vite dev server white screen without opening devtools.",
   "main": "src/index.js",
   "types": "src/index.d.ts",

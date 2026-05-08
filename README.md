@@ -1,13 +1,18 @@
-# @dev_zuo/vite-plugin-white-screen-progress
+# vite-plugin-white-screen-progress
 
 Show loading progress on page during Vite dev server white screen without opening devtools.
 
-![white-screen-progress.gif](./docs/white-screen-progress.gif)
+
+
+without plugin | ✅ with plugin | ✅ fixed theme | ✅ normal theme
+--- | --- | --- | ---
+![without_plugin.gif](./docs/without_plugin.gif) | ![with_plugin.gif](./docs/theme_default.gif) |  ![fixed_theme.gif](./docs/theme_fixed.gif) |  ![normal_theme.gif](./docs/theme_normal.gif) 
+
 
 ## Install
 
 ```bash
-npm install vite-plugin-white-screen-progress@1.0.0 --save-dev --save-exact
+npm install vite-plugin-white-screen-progress@1.0.1 --save-dev --save-exact
 ```
 
 ## Usage

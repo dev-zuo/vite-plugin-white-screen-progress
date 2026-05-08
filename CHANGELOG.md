@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.1 (2026-05-08)
+
+- docs: update docs, update npm ignore config
+
 ## 1.0.0 (2026-05-08)
 
 - feat: edit package name, edit theme 
