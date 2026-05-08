@@ -1,4 +1,4 @@
-const getClientScript = ({ themeStyle }) => {
+const getClientScript = ({ themeStyle, theme }) => {
     return  `
     const randomDivId = 'vite-plugin-white-screen-progress-' + Math.round(Math.random() * 100 * 1000)
     const div = document.createElement('div');
@@ -18,12 +18,12 @@ const getClientScript = ({ themeStyle }) => {
                 // totalBytes += entry.transferSize;
                 // loadedBytes += entry.encodedBodySize || entry.decodedBodySize;
                 const htmlList = [
-                    'Vite dev server, resource loading...<br>',
+                    'Vite resource loading...<br>',
                     'InitiatorType: ' + entry.initiatorType + '<br>',
                     'StartTime: ' + entry.startTime.toFixed(2) + 'ms <br>',
                     'Duration: ' + entry.duration.toFixed(2) + 'ms <br>',
-                    'TransferSize: ' + entry.transferSize +  'KB <br>',
-                    'Name: ' + entry.name + '<br>',
+                    'TransferSize: ' + entry.transferSize +  'kb <br>',
+                    'Name: ' + ${theme === 'fixed-simple' ? "(entry.name?.split('/') || '').pop()" : 'entry.name' } + '<br>',
                 ]
                 curResourceName = entry.name
                 resourceInfo[entry.name] = false
@@ -65,16 +65,20 @@ const getClientScript = ({ themeStyle }) => {
 }
 
 export default function devServerWhiteScreenProgress(config = {
-    theme: 'fix-right',
-    style: ''
+    theme: 'fixed-simple',
+    style: '',
 }) {
 
     const themeStyleConfig = {
-        // Default style  fix in right 
-        'fix-right': 'font-size: 12px;background: rgba(0, 0, 0, .8);color: white; padding: 22px;border-radius: 8px;position:fixed;top: 200px;z-index: 1000000;right: 9px;width:300px;height: 300px;overflow:hidden;word-break:break-all;',
+        // Default style  fix in right, simple info
+        'fixed-simple': 'font-size: 12px;background: rgba(0, 0, 0, .8);color: white; padding: 16px;border-radius: 8px;position:fixed;top: 200px;z-index: 1000000;right: 9px;width:150px;height: auto;overflow:hidden;word-break:break-all;',
+        // fix in right, more info 
+        'fixed': 'font-size: 12px;background: rgba(0, 0, 0, .8);color: white; padding: 22px;border-radius: 8px;position:fixed;top: 200px;z-index: 1000000;right: 9px;width:300px;height: auto;overflow:hidden;word-break:break-all;',
         // Display in a flat layout on the page
-        'middle': 'font-size: 14px;background: #fff;color: #333; padding: 22px;border-radius: 8px;position:absolute;top: 100px;z-index: 1000000',
+        'normal': 'font-size: 14px;background: #fff;color: #333; padding: 22px;border-radius: 8px;',
     }
+
+    // console.log('themeStyleConfig[config?.theme]', themeStyleConfig[config?.theme])
 
     return {
         name: 'vite-plugin-white-screen-progress',
@@ -92,7 +96,8 @@ export default function devServerWhiteScreenProgress(config = {
                             type: 'module'
                         },
                         children: getClientScript({
-                            themeStyle: config?.style || themeStyleConfig[config?.theme] || themeStyleConfig['fix-right']
+                            themeStyle: config?.style || themeStyleConfig[config?.theme] || themeStyleConfig['fixed-simple'],
+                            theme: config?.theme || 'fixed-simple'
                         })
                     }
                 ]

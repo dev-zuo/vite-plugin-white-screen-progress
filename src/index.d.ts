@@ -3,8 +3,9 @@ import { Plugin } from 'vite';
 interface PluginConfig {
   /**
    * Theme
-   * - "fix-right": default, progress info panel fix in right
-   * - "middle": display in a flat layout on the page, not fixed
+   * - "fixed-simple": default, fixed in right, simple info
+   * - "fixed": fixed in right, more info 
+   * - "normal": display in a flat layout on the page, not fixed
    */
   theme?: string;
   /**

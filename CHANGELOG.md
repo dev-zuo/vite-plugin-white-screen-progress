@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.0 (2026-05-08)
+
+- feat: edit package name, edit theme 
+
 ## 0.3.0 (2026-05-06)
 
 - feat: add d.ts, fix ts check error
